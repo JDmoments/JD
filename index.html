@@ -4,61 +4,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JD Moments | Create Special Memories</title>
-  <meta name="description" content="Create beautiful birthday, love and anniversary websites with JD Moments.">
+  <title>JD Moments | Special Website Creator</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="navbar">
-    <a class="logo" href="#">JD <span>Moments</span></a>
-    <a href="#templates" class="nav-link">Templates</a>
+  <header class="hero">
+    <p class="brand">💜 JD MOMENTS</p>
+    <h1>Create a Moment They'll Never Forget</h1>
+    <p>Personalized websites for your favourite people.</p>
   </header>
 
-  <main>
-    <section class="hero">
-      <p class="eyebrow">YOUR STORY, YOUR MOMENT ✨</p>
-      <h1>Make every moment<br><span>unforgettable.</span></h1>
-      <p class="intro">
-        Create a beautiful surprise website for someone special.
-        Celebrate birthdays, love and unforgettable memories.
-      </p>
-      <a class="primary-button" href="#templates">Explore Templates ↓</a>
-      <p class="note">Every moment tells a story. 💜</p>
-    </section>
+  <main class="container">
+    <section class="templates">
+      <h2>Choose Your Occasion</h2>
 
-    <section class="templates" id="templates">
-      <p class="eyebrow">MADE FOR YOUR SPECIAL SOMEONE</p>
-      <h2>Choose your moment</h2>
-
-      <div class="template-grid">
-        <article class="template-card birthday">
-          <div class="emoji">🎂</div>
-          <h3>Birthday Surprise</h3>
-          <p>Make their special day unforgettable.</p>
-          <button onclick="chooseTemplate('Birthday Surprise')">Choose Template →</button>
-        </article>
-
-        <article class="template-card love">
-          <div class="emoji">💜</div>
-          <h3>Love Proposal</h3>
-          <p>Turn your feelings into a memory.</p>
-          <button onclick="chooseTemplate('Love Proposal')">Choose Template →</button>
-        </article>
-
-        <article class="template-card anniversary">
-          <div class="emoji">💍</div>
-          <h3>Anniversary</h3>
-          <p>Celebrate your journey together.</p>
-          <button onclick="chooseTemplate('Anniversary')">Choose Template →</button>
-        </article>
+      <div class="template-card">
+        <div class="emoji">🎂</div>
+        <h3>Birthday Surprise</h3>
+        <p>Make their special day unforgettable.</p>
+        <button onclick="chooseTemplate('Birthday Surprise')">
+          Choose Birthday
+        </button>
       </div>
 
-      <p id="message" class="message" aria-live="polite"></p>
+      <div class="template-card">
+        <div class="emoji">💜</div>
+        <h3>Love Proposal</h3>
+        <p>Turn your feelings into a memory.</p>
+        <button onclick="chooseTemplate('Love Proposal')">
+          Choose Love Proposal
+        </button>
+      </div>
+
+      <div class="template-card">
+        <div class="emoji">💍</div>
+        <h3>Anniversary</h3>
+        <p>Celebrate your journey together.</p>
+        <button onclick="chooseTemplate('Anniversary')">
+          Choose Anniversary
+        </button>
+      </div>
+    </section>
+
+    <section id="creator" class="creator">
+      <h2>✨ Customize Your Website</h2>
+      <p id="selectedTemplate">First, choose an occasion above.</p>
+
+      <form id="customForm">
+        <label for="recipient">Their name</label>
+        <input id="recipient" type="text"
+          placeholder="Enter their name" required>
+
+        <label for="message">Your special message</label>
+        <textarea id="message" rows="4"
+          placeholder="Write something from your heart..."
+          required></textarea>
+
+        <label for="photo">Photo (optional)</label>
+        <input id="photo" type="file" accept="image/*">
+
+        <button type="submit">Preview My Website 💜</button>
+      </form>
+
+      <div id="preview" class="preview" hidden>
+        <p>✨ YOUR PREVIEW ✨</p>
+        <h2 id="previewTitle"></h2>
+        <h3 id="previewName"></h3>
+        <img id="previewPhoto" alt="Your selected photo" hidden>
+        <p id="previewMessage"></p>
+        <p class="notice">
+          Preview only — publishing and ₹50 payment will be added later.
+        </p>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 JD Moments · Made with love. 💜</p>
+    <p>Made with 💜 by JD Moments</p>
   </footer>
 
   <script src="script.js"></script>
