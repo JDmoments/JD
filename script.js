@@ -15,7 +15,7 @@ function chooseTemplate(templateName) {
 }
 
 document.getElementById("customForm").addEventListener("submit", function (event) {
-  event.preventDefault();
+event.preventDefault();
 
   if (!selectedTemplate) {
     alert("Please choose an occasion first! 💜");
