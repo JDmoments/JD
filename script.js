@@ -3,67 +3,73 @@ let selectedTemplate = "";
 function chooseTemplate(templateName) {
   selectedTemplate = templateName;
 
-  const heading = document.getElementById("selectedTemplate");
-  const creator = document.getElementById("creator");
+  document.getElementById("selectedTemplate").textContent =
+    "Selected: " + templateName + " 💜";
 
-  heading.textContent = "Selected: " + templateName + " 💜";
-
-  creator.scrollIntoView({
+  document.getElementById("creator").scrollIntoView({
     behavior: "smooth",
     block: "start"
   });
 }
 
-document.getElementById("customForm").addEventListener("submit", function (event) {
-event.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("customForm");
 
-  if (!selectedTemplate) {
-    alert("Please choose an occasion first! 💜");
-    return;
-  }
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  const recipient = document.getElementById("recipient").value.trim();
-  const message = document.getElementById("message").value.trim();
-  const photoInput = document.getElementById("photo");
-
-  document.getElementById("previewTitle").textContent = selectedTemplate;
-  document.getElementById("previewName").textContent = "For " + recipient;
-  document.getElementById("previewMessage").textContent = message;
-
-  const previewPhoto = document.getElementById("previewPhoto");
-  const preview = document.getElementById("preview");
-
-  if (photoInput.files && photoInput.files[0]) {
-    const file = photoInput.files[0];
-
-    if (!file.type.startsWith("image/")) {
-      alert("Please select an image file.");
+    if (!selectedTemplate) {
+      alert("First, choose Birthday, Love Proposal, or Anniversary!");
       return;
     }
 
-    const reader = new FileReader();
+    const recipient = document.getElementById("recipient").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const photoInput = document.getElementById("photo");
 
-    reader.onload = function () {
-      previewPhoto.src = reader.result;
-      previewPhoto.hidden = false;
+    const preview = document.getElementById("preview");
+    const previewPhoto = document.getElementById("previewPhoto");
+
+    document.getElementById("previewTitle").textContent = selectedTemplate;
+    document.getElementById("previewName").textContent = "For " + recipient;
+    document.getElementById("previewMessage").textContent = message;
+
+    function showPreview() {
       preview.hidden = false;
 
-      preview.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    };
+      setTimeout(function () {
+        preview.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 100);
+    }
 
-    reader.readAsDataURL(file);
-  } else {
-    previewPhoto.hidden = true;
-    previewPhoto.removeAttribute("src");
-    preview.hidden = false;
+    if (photoInput.files && photoInput.files.length > 0) {
+      const file = photoInput.files[0];
 
-    preview.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  }
-});
+      if (!file.type.startsWith("image/")) {
+        alert("Please select an image file.");
+        return;
+      }
+
+      const reader = new FileReader();
+
+      reader.onload = function () {
+        previewPhoto.src = reader.result;
+        previewPhoto.hidden = false;
+        showPreview();
+      };
+
+      reader.onerror = function () {
+        alert("Photo could not be loaded. Please try another photo.");
+      };
+
+      reader.readAsDataURL(file);
+    } else {
+      previewPhoto.hidden = true;
+      previewPhoto.removeAttribute("src");
+      showPreview();
+    }
+  });
 });
