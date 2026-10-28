@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JD Moments | Create Special Memories</title>
+  <meta name="description" content="Create beautiful birthday, love and anniversary websites with JD Moments.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="logo" href="#">JD <span>Moments</span></a>
+    <a href="#templates" class="nav-link">Templates</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">YOUR STORY, YOUR MOMENT ✨</p>
+      <h1>Make every moment<br><span>unforgettable.</span></h1>
+      <p class="intro">
+        Create a beautiful surprise website for someone special.
+        Celebrate birthdays, love and unforgettable memories.
+      </p>
+      <a class="primary-button" href="#templates">Explore Templates ↓</a>
+      <p class="note">Every moment tells a story. 💜</p>
+    </section>
+
+    <section class="templates" id="templates">
+      <p class="eyebrow">MADE FOR YOUR SPECIAL SOMEONE</p>
+      <h2>Choose your moment</h2>
+
+      <div class="template-grid">
+        <article class="template-card birthday">
+          <div class="emoji">🎂</div>
+          <h3>Birthday Surprise</h3>
+          <p>Make their special day unforgettable.</p>
+          <button onclick="chooseTemplate('Birthday Surprise')">Choose Template →</button>
+        </article>
+
+        <article class="template-card love">
+          <div class="emoji">💜</div>
+          <h3>Love Proposal</h3>
+          <p>Turn your feelings into a memory.</p>
+          <button onclick="chooseTemplate('Love Proposal')">Choose Template →</button>
+        </article>
+
+        <article class="template-card anniversary">
+          <div class="emoji">💍</div>
+          <h3>Anniversary</h3>
+          <p>Celebrate your journey together.</p>
+          <button onclick="chooseTemplate('Anniversary')">Choose Template →</button>
+        </article>
+      </div>
+
+      <p id="message" class="message" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 JD Moments · Made with love. 💜</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
